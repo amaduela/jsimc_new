@@ -1,0 +1,25 @@
+{
+  "name": "jsimc",
+  "version": "1.0.0",
+  "description": "Doing a javascript course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaduela/jsimc_new.git"
+  },
+  "keywords": [
+    "JS",
+    "HTML",
+    "CSS",
+    "GULP"
+  ],
+  "author": "Anselmo Maduela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaduela/jsimc_new/issues"
+  },
+  "homepage": "https://github.com/amaduela/jsimc_new#readme"
+}
