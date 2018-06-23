@@ -24,6 +24,7 @@
   "homepage": "https://github.com/amaduela/jsimc_new#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.1",
     "gulp-notify": "^3.2.0",
     "gulp-sass": "^4.0.1"
   },
