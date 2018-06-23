@@ -26,18 +26,13 @@ function getData (form) {
 
 function buildTr (paciente) {
 	var pacienteTr = document.createElement("tr");
+	pacienteTr.classList.add("paciente");
 
-	var nomeTd = document.createElement("td");
-	var pesoTd = document.createElement("td");
-	var alturaTd = document.createElement("td");
-	var gorduraTd = document.createElement("td");
-	var imcTd = document.createElement("td");
-
-	nomeTd.textContent = paciente.nome;
-	pesoTd.textContent = paciente.peso;
-	alturaTd.textContent = paciente.altura;
-	gorduraTd.textContent = paciente.gordura;
-	imcTd.textContent = paciente.imc;
+	var nomeTd = buildTd(paciente.nome, "info-nome");
+	var pesoTd = buildTd(paciente.peso, "info-peso");
+	var alturaTd = buildTd(paciente.altura, "info-altura");
+	var gorduraTd = buildTd(paciente.gordura, "info-gordura");
+	var imcTd = buildTd(paciente.imc, "info-imc");
 
 	pacienteTr.appendChild(nomeTd);
 	pacienteTr.appendChild(pesoTd);
@@ -46,4 +41,12 @@ function buildTr (paciente) {
 	pacienteTr.appendChild(imcTd);
 
 	return pacienteTr;
+}
+
+function buildTd (data, cssClass) {
+	var td = document.createElement("td");
+	td.textContent = data;
+	nomeTd.classList.add(cssClass);
+
+	return td;
 }
