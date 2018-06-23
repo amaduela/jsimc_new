@@ -15,6 +15,7 @@ for (var i = 0; i < pacientes.length; i++) {
 	var gordura = paciente.querySelector('.inf-gordura');
 	var _gordura = gordura.textContent;
 
+	var campoIMC = paciente.querySelector('.inf-imc');
 
 	if (_peso <= 0 || _peso >= 600) {
 		campoIMC.textContent = "Peso inválido!";
@@ -24,6 +25,6 @@ for (var i = 0; i < pacientes.length; i++) {
 		paciente.style.backgroundColor = "lightcoral";
 	}else {
 		var imc = _peso / (_altura * _altura);
-		campoIMC.textContent = imc.toFixed(2); estudantes
+		campoIMC.textContent = imc.toFixed(2);
 	}
 }
