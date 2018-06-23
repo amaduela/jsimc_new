@@ -14,3 +14,7 @@ gulp.task('compileLess', function() {
 	  .pipe(minifycss())
 	  .pipe((gulp.dest('css/')))
 });
+
+gulp.task('listen', function() {
+	gulp.watch('src/less/**/*.less', ['compileLess']);
+});
