@@ -41,6 +41,14 @@ function validaPeso (peso) {
 	}
 }
 
+function validaAltura (altura) {
+	if (altura >= 0 && altura <= 3.0) {
+		return true;
+	}else {
+		return false;
+	}
+}
+
 function calculaImc(peso, altura) {
 	var imc = 0;
 	imc = peso / (altura * altura);
