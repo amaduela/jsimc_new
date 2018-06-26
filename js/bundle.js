@@ -7,10 +7,14 @@ botaoAdicionar.addEventListener('click', function(event) {
 	var paciente = getData(form);
 	// console.log(paciente);
 
-	var error = validaPaciente(paciente);
-	if (error.length > 0) {
-		var mensagemErro = document.querySelector("#error");
-		mensagemErro.textContent = error;
+	var errors = validaPaciente(paciente);
+	var mensagemErro = document.querySelector("#error");
+	if (errors.length > 0) {
+		for (var i = errors.length - 1; i >= 0; i--) {
+			var li = document.createElement("li");
+			li.textContent = errors[i];
+			mensagemErro.appendChild(li);
+		}
 		return;
 	}
 	
@@ -57,13 +61,16 @@ function buildTd (data, cssClass) {
 }
 
 function validaPaciente (paciente) {
+	var erros = [];
+
 	if(!validaPeso(paciente.peso)){
-		return "Peso é Invalido!";
-	}else if(!validaAltura(paciente.altura)){
-		return "Altura é Invalida!";
-	}else{
-		return "";
+		erros.push("Peso é Invalido!");
 	}
+	if(!validaAltura(paciente.altura)){
+		erros.push("Altura é Invalida!");
+	}
+
+	return erros;
 }
 var pacientes = document.querySelectorAll('.paciente');
 
