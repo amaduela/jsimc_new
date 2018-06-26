@@ -11,7 +11,9 @@ botaoAdicionar.addEventListener('click', function(event) {
 	var mensagemErro = document.querySelector("#error");
 	if (errors.length > 0) {
 		for (var i = errors.length - 1; i >= 0; i--) {
-			mensagemErro.textContent += errors[i];
+			var li = document.createElement("li");
+			li.textContent = errors[i];
+			mensagemErro.appendChild(li);
 		}
 		return;
 	}
