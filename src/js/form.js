@@ -6,7 +6,16 @@ botaoAdicionar.addEventListener('click', function(event) {
 
 	var paciente = getData(form);
 	// console.log(paciente);
+
+	var error = validaPaciente(paciente);
+	if (error.length > 0) {
+		var mensagemErro = document.querySelector("#error");
+		mensagemErro.textContent = error;
+		return;
+	}
+	
 	var pacienteTr = buildTr(paciente);
+
 	
 	var tabela = document.querySelector("#tabela-pacientes");
 	tabela.appendChild(pacienteTr);
@@ -45,4 +54,14 @@ function buildTd (data, cssClass) {
 	td.classList.add(cssClass);
 
 	return td;
+}
+
+function validaPaciente (paciente) {
+	if(!validaPeso(paciente.peso)){
+		return "Peso é Invalido!";
+	}else if(!validaAltura(paciente.altura)){
+		return "Altura é Invalida!";
+	}else{
+		return "";
+	}
 }

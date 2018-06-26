@@ -17,7 +17,7 @@ gulp.task('compileLess', function() {
 });
 
 gulp.task('js', function(){
-  return gulp.src('src/js/*.js')
+  return gulp.src(['src/js/form.js', 'src/js/calcula-imc.js'])
     .pipe(concat('bundle.js'))
     .pipe(gulp.dest('js'))
 });
