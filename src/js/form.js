@@ -7,10 +7,12 @@ botaoAdicionar.addEventListener('click', function(event) {
 	var paciente = getData(form);
 	// console.log(paciente);
 
-	var error = validaPaciente(paciente);
-	if (error.length > 0) {
-		var mensagemErro = document.querySelector("#error");
-		mensagemErro.textContent = error;
+	var errors = validaPaciente(paciente);
+	var mensagemErro = document.querySelector("#error");
+	if (errors.length > 0) {
+		for (var i = errors.length - 1; i >= 0; i--) {
+			mensagemErro.textContent += errors[i];
+		}
 		return;
 	}
 	
