@@ -1,7 +1,6 @@
-var ginasta = document.querySelectorAll(".ginasta");
+var tabela = document.querySelector("table");
 
-ginasta.forEach(function (ginasta) {
-	ginasta.addEventListener("dbclick", function () {
-		console.log("Clicked!");
-	});
+tabela.addEventListener("dbclick", function (event) {
+	event.target.parentNode.classList.add("fadeOut");
+	event.target.parentNode.remove();
 });
