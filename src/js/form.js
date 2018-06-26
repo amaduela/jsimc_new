@@ -57,11 +57,14 @@ function buildTd (data, cssClass) {
 }
 
 function validaPaciente (paciente) {
+	var erros = [];
+
 	if(!validaPeso(paciente.peso)){
-		return "Peso é Invalido!";
-	}else if(!validaAltura(paciente.altura)){
-		return "Altura é Invalida!";
-	}else{
-		return "";
+		erros.push("Peso é Invalido!");
 	}
+	if(!validaAltura(paciente.altura)){
+		erros.push("Altura é Invalida!");
+	}
+
+	return erros;
 }
