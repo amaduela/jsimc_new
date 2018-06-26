@@ -1,13 +1,13 @@
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
+var botaoAdicionar = document.querySelector("#adicionar-ginasta");
 botaoAdicionar.addEventListener('click', function(event) {
 	event.preventDefault();
 
 	var form = document.querySelector('#formAdd');
 
-	var paciente = getData(form);
-	// console.log(paciente);
+	var ginasta = getData(form);
+	// console.log(ginasta);
 
-	var errors = validaPaciente(paciente);
+	var errors = validaGinasta(ginasta);
 	var mensagemErro = document.querySelector("#error");
 	if (errors.length > 0) {
 		for (var i = errors.length - 1; i >= 0; i--) {
@@ -18,17 +18,17 @@ botaoAdicionar.addEventListener('click', function(event) {
 		return;
 	}
 	
-	var pacienteTr = buildTr(paciente);
+	var ginastaTr = buildTr(ginasta);
 
 	
-	var tabela = document.querySelector("#tabela-pacientes");
-	tabela.appendChild(pacienteTr);
+	var tabela = document.querySelector("#tabela-ginastas");
+	tabela.appendChild(ginastaTr);
 
 	form.reset();
 });
 
 function getData (form) {
-	var paciente = {
+	var ginasta = {
 		nome: form.nome.value,
 		peso: form.peso.value,
 		altura: form.altura.value,
@@ -36,18 +36,18 @@ function getData (form) {
 		imc: calculaImc(form.peso.value, form.altura.value)
 	}
 
-	return paciente;
+	return ginasta;
 }
 
-function buildTr (paciente) {
+function buildTr (ginasta) {
 	var tr = document.createElement("tr");
-	tr.classList.add("paciente");
+	tr.classList.add("ginasta");
 
-	tr.appendChild(buildTd(paciente.nome, "info-nome"));
-	tr.appendChild(buildTd(paciente.peso, "info-peso"));
-	tr.appendChild(buildTd(paciente.altura, "info-altura"));
-	tr.appendChild(buildTd(paciente.gordura, "info-gordura"));
-	tr.appendChild(buildTd(paciente.imc, "info-imc"));
+	tr.appendChild(buildTd(ginasta.nome, "info-nome"));
+	tr.appendChild(buildTd(ginasta.peso, "info-peso"));
+	tr.appendChild(buildTd(ginasta.altura, "info-altura"));
+	tr.appendChild(buildTd(ginasta.gordura, "info-gordura"));
+	tr.appendChild(buildTd(ginasta.imc, "info-imc"));
 
 	return tr;
 }
@@ -60,13 +60,13 @@ function buildTd (data, cssClass) {
 	return td;
 }
 
-function validaPaciente (paciente) {
+function validaGinasta (ginasta) {
 	var erros = [];
 
-	if(!validaPeso(paciente.peso)){
+	if(!validaPeso(ginasta.peso)){
 		erros.push("Peso é Invalido!");
 	}
-	if(!validaAltura(paciente.altura)){
+	if(!validaAltura(ginasta.altura)){
 		erros.push("Altura é Invalida!");
 	}
 

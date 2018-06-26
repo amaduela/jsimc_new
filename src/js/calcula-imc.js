@@ -1,31 +1,31 @@
-var pacientes = document.querySelectorAll('.paciente');
+var ginastas = document.querySelectorAll('.ginasta');
 
-for (var i = 0; i < pacientes.length; i++) {
-	var paciente = pacientes[i];
+for (var i = 0; i < ginastas.length; i++) {
+	var ginasta = ginastas[i];
 
-	var nome = paciente.querySelector('.inf-nome');
+	var nome = ginasta.querySelector('.inf-nome');
 	var _nome = nome.textContent;
 
-	var peso = paciente.querySelector('.inf-peso');
+	var peso = ginasta.querySelector('.inf-peso');
 	var _peso = peso.textContent;
 
-	var altura = paciente.querySelector('.inf-altura');
+	var altura = ginasta.querySelector('.inf-altura');
 	var _altura = altura.textContent;
 
-	var gordura = paciente.querySelector('.inf-gordura');
+	var gordura = ginasta.querySelector('.inf-gordura');
 	var _gordura = gordura.textContent;
 
-	var tdImc = paciente.querySelector('.inf-imc');
+	var tdImc = ginasta.querySelector('.inf-imc');
 	var pesoValido = validaPeso(_peso);
 	var alturaValida = validaAltura(_altura);
 
 	if (!pesoValido) {
 		tdImc.textContent = "Peso inválido!";
-		paciente.classList.add('paciente-invalido');
+		ginasta.classList.add('paciente-invalido');
 	}
 	if (!alturaValida) {
 		tdImc.textContent = "Altura inválida!";
-		paciente.classList.add('paciente-invalido');
+		ginasta.classList.add('paciente-invalido');
 	}
 	if (pesoValido && alturaValida) {
 		var imc = calculaImc(_peso, _altura);

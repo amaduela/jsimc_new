@@ -1,13 +1,13 @@
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
+var botaoAdicionar = document.querySelector("#adicionar-ginasta");
 botaoAdicionar.addEventListener('click', function(event) {
 	event.preventDefault();
 
 	var form = document.querySelector('#formAdd');
 
-	var paciente = getData(form);
-	// console.log(paciente);
+	var ginasta = getData(form);
+	// console.log(ginasta);
 
-	var errors = validaPaciente(paciente);
+	var errors = validaGinasta(ginasta);
 	var mensagemErro = document.querySelector("#error");
 	if (errors.length > 0) {
 		for (var i = errors.length - 1; i >= 0; i--) {
@@ -18,17 +18,17 @@ botaoAdicionar.addEventListener('click', function(event) {
 		return;
 	}
 	
-	var pacienteTr = buildTr(paciente);
+	var ginastaTr = buildTr(ginasta);
 
 	
-	var tabela = document.querySelector("#tabela-pacientes");
-	tabela.appendChild(pacienteTr);
+	var tabela = document.querySelector("#tabela-ginastas");
+	tabela.appendChild(ginastaTr);
 
 	form.reset();
 });
 
 function getData (form) {
-	var paciente = {
+	var ginasta = {
 		nome: form.nome.value,
 		peso: form.peso.value,
 		altura: form.altura.value,
@@ -36,18 +36,18 @@ function getData (form) {
 		imc: calculaImc(form.peso.value, form.altura.value)
 	}
 
-	return paciente;
+	return ginasta;
 }
 
-function buildTr (paciente) {
+function buildTr (ginasta) {
 	var tr = document.createElement("tr");
-	tr.classList.add("paciente");
+	tr.classList.add("ginasta");
 
-	tr.appendChild(buildTd(paciente.nome, "info-nome"));
-	tr.appendChild(buildTd(paciente.peso, "info-peso"));
-	tr.appendChild(buildTd(paciente.altura, "info-altura"));
-	tr.appendChild(buildTd(paciente.gordura, "info-gordura"));
-	tr.appendChild(buildTd(paciente.imc, "info-imc"));
+	tr.appendChild(buildTd(ginasta.nome, "info-nome"));
+	tr.appendChild(buildTd(ginasta.peso, "info-peso"));
+	tr.appendChild(buildTd(ginasta.altura, "info-altura"));
+	tr.appendChild(buildTd(ginasta.gordura, "info-gordura"));
+	tr.appendChild(buildTd(ginasta.imc, "info-imc"));
 
 	return tr;
 }
@@ -60,46 +60,46 @@ function buildTd (data, cssClass) {
 	return td;
 }
 
-function validaPaciente (paciente) {
+function validaGinasta (ginasta) {
 	var erros = [];
 
-	if(!validaPeso(paciente.peso)){
+	if(!validaPeso(ginasta.peso)){
 		erros.push("Peso é Invalido!");
 	}
-	if(!validaAltura(paciente.altura)){
+	if(!validaAltura(ginasta.altura)){
 		erros.push("Altura é Invalida!");
 	}
 
 	return erros;
 }
-var pacientes = document.querySelectorAll('.paciente');
+var ginastas = document.querySelectorAll('.ginasta');
 
-for (var i = 0; i < pacientes.length; i++) {
-	var paciente = pacientes[i];
+for (var i = 0; i < ginastas.length; i++) {
+	var ginasta = ginastas[i];
 
-	var nome = paciente.querySelector('.inf-nome');
+	var nome = ginasta.querySelector('.inf-nome');
 	var _nome = nome.textContent;
 
-	var peso = paciente.querySelector('.inf-peso');
+	var peso = ginasta.querySelector('.inf-peso');
 	var _peso = peso.textContent;
 
-	var altura = paciente.querySelector('.inf-altura');
+	var altura = ginasta.querySelector('.inf-altura');
 	var _altura = altura.textContent;
 
-	var gordura = paciente.querySelector('.inf-gordura');
+	var gordura = ginasta.querySelector('.inf-gordura');
 	var _gordura = gordura.textContent;
 
-	var tdImc = paciente.querySelector('.inf-imc');
+	var tdImc = ginasta.querySelector('.inf-imc');
 	var pesoValido = validaPeso(_peso);
 	var alturaValida = validaAltura(_altura);
 
 	if (!pesoValido) {
 		tdImc.textContent = "Peso inválido!";
-		paciente.classList.add('paciente-invalido');
+		ginasta.classList.add('paciente-invalido');
 	}
 	if (!alturaValida) {
 		tdImc.textContent = "Altura inválida!";
-		paciente.classList.add('paciente-invalido');
+		ginasta.classList.add('paciente-invalido');
 	}
 	if (pesoValido && alturaValida) {
 		var imc = calculaImc(_peso, _altura);
@@ -129,3 +129,10 @@ function calculaImc(peso, altura) {
 
 	return imc.toFixed(2);
 }
+var ginasta = document.querySelectorAll(".ginasta");
+
+ginasta.forEach(function (ginasta) {
+	ginasta.addEventListener("dbclick", function () {
+		console.log("Clicked!");
+	});
+});
