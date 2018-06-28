@@ -5,11 +5,11 @@ addButton.addEventListener("click", function () {
 
 	var xhr = new new XMLHttpRequest();
 
-	// xhr.open("GET", "https://api-pacientes.herokuapp.com/pacientes");
+	xhr.open("GET", "https://api-pacientes.herokuapp.com/pacientes");
 
-	// xhr.addEventListener("load", function () {
-	// 	var result = xhr.responseText;
-	// 	console.log(result);
-	// });
-	// xhr.send();
+	xhr.addEventListener("load", function () {
+		var result = xhr.responseText;
+		console.log(result);
+	});
+	xhr.send();
 });
