@@ -18,11 +18,7 @@ botaoAdicionar.addEventListener('click', function(event) {
 		return;
 	}
 	
-	var ginastaTr = buildTr(ginasta);
-
-	
-	var tabela = document.querySelector("#tabela-ginastas");
-	tabela.appendChild(ginastaTr);
+	addOnTable(ginasta);
 
 	form.reset();
 });
@@ -37,6 +33,12 @@ function getData (form) {
 	}
 
 	return ginasta;
+}
+
+function addOnTable (ginasta) {
+	var ginastaTr = buildTr(ginasta);
+	var tabela = document.querySelector("#tabela-ginasta");
+	tabela.appendChild(ginastaTr); 
 }
 
 function buildTr (ginasta) {
@@ -174,6 +176,10 @@ addButton.addEventListener("click", function () {
 	xhr.addEventListener("load", function () {
 		var result = xhr.responseText;
 		var ginastas = JSON.parse(result);
+
+		ginastas.forEach(function (element) {
+			addOnTable(element);
+		});
 	});
 	xhr.send();
 });

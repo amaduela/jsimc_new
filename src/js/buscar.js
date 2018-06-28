@@ -10,6 +10,10 @@ addButton.addEventListener("click", function () {
 	xhr.addEventListener("load", function () {
 		var result = xhr.responseText;
 		var ginastas = JSON.parse(result);
+
+		ginastas.forEach(function (element) {
+			addOnTable(element);
+		});
 	});
 	xhr.send();
 });
