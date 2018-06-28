@@ -17,7 +17,7 @@ gulp.task('compileLess', function() {
 });
 
 gulp.task('js', function(){
-  return gulp.src(['src/js/form.js', 'src/js/calcula-imc.js', 'src/js/remove.js', 'src/js/filtrar.js'])
+  return gulp.src(['src/js/form.js', 'src/js/calcula-imc.js', 'src/js/remove.js', 'src/js/filtrar.js', 'src/js/buscar.js'])
     .pipe(concat('bundle.js'))
     .pipe(gulp.dest('js'))
 });
