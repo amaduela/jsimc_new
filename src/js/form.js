@@ -10,9 +10,10 @@ botaoAdicionar.addEventListener('click', function(event) {
 	var errors = validaGinasta(ginasta);
 	var mensagemErro = document.querySelector("#error");
 	if (errors.length > 0) {
-		for (var i = errors.length - 1; i >= 0; i--) {
+		for (var i = 0; i < errors.length ; i++) {
 			var li = document.createElement("li");
 			li.textContent = errors[i];
+			li.classList.add('text-danger');
 			mensagemErro.appendChild(li);
 		}
 		return;
@@ -63,13 +64,35 @@ function buildTd (data, cssClass) {
 }
 
 function validaGinasta (ginasta) {
+	var st = true;
 	var erros = [];
-
-	if(!validaPeso(ginasta.peso)){
-		erros.push("Peso é Invalido!");
+	if (ginasta.nome.length == 0) {
+		erros.push("Por favor preencha o campo nome!");
+		st = false;
 	}
-	if(!validaAltura(ginasta.altura)){
-		erros.push("Altura é Invalida!");
+
+	if (ginasta.altura.length == 0) {
+		erros.push("Por favor preencha o campo altura!");
+		st = false;
+	}
+
+	if (ginasta.peso.length == 0) {
+		erros.push("Por favor preencha o campo peso!");
+		st = false;
+	}
+
+	if (ginasta.gordura.length == 0) {
+		erros.push("Por favor preencha o campo gordura!");
+		st = false;
+	}
+
+	if (st) {
+		if(!validaPeso(ginasta.peso)){
+			erros.push("Peso é Invalido!");
+		}
+		if(!validaAltura(ginasta.altura)){
+			erros.push("Altura é Invalida!");
+		}
 	}
 
 	return erros;
