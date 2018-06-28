@@ -10,6 +10,8 @@ filter.addEventListener("input", function () {
 			tdNome = ginasta.querySelector(".inf-nome");
 			var nome = tdNome.textContent;
 
+			var express = new new RegExp(this.value, "i");
+
 			if (nome != this.value) {
 				ginasta.classList.add('invisible');
 			}else {
